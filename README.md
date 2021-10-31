@@ -101,3 +101,11 @@ Also, you can use the [mqtt-explorer](http://mqtt-explorer.com/) to send and rec
 ![alt text](./images/client_send_message.png)
 
 ![alt text](./images/broker_publish.png)
+
+### Run a local instance with docker
+
+```bash
+docker run -d --hostname my-rabbit --name my-rabbit -p 5672:5672 -p 15672:15672 -e RABBITMQ_ERLANG_COOKIE='cookie_for_clustering' -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password  --name some-rabbit rabbitmq:3-management
+```
+
+In this case the default user is not guest/guest and by configuring the **RABBITMQ_ERLANG_COOKIE** environment variable, we can create another container and configure a cluster.
